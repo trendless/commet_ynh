@@ -14,6 +14,11 @@ ynh_script_progression "Setting up source files..."
 # Download, check integrity, uncompress and patch the source from manifest.toml
 ynh_setup_source --dest_dir="$install_dir"
 
+if [ $path != "/" ]
+then
+    ynh_replace --match="<base href=\"" --replace="<base href=\"$path" --file="$install_dir/index.html"
+fi
+
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
