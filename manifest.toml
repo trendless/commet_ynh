@@ -52,7 +52,7 @@ ram.runtime = "50M"
     sha256 = "ce1c7fc5e804547dd0fac9638b0090160912fa62abb460db8925fd743b4f0da8"
 
     autoupdate.strategy = "latest_github_release"
-    autoupdate.asset = "commet-web\\.tar\\.gz"
+    autoupdate.asset = "^commet-web\\.tar\\.gz$"
 
     [resources.system_user]
 
