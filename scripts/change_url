@@ -7,17 +7,22 @@
 source /usr/share/yunohost/helpers
 
 #=================================================
+# ADJUST BASE HREF
+#=================================================
+ynh_script_progression "Adjusting source files..."
+
+if [ $path != "/" ]
+then
+    ynh_replace --match="<base href=\"$old_path" --replace="<base href=\"$new_path" --file="$install_dir/index.html"
+fi
+
+#=================================================
 # MODIFY URL IN NGINX CONF
 #=================================================
 ynh_script_progression "Updating NGINX web server configuration..."
 
 # this will most likely adjust NGINX config correctly
 ynh_config_change_url_nginx
-
-if [ $path != "/" ]
-then
-    ynh_replace --match="<base href=\"" --replace="<base href=\"$path" --file="$install_dir/index.html"
-fi
 
 #=================================================
 # END OF SCRIPT
